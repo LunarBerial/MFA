@@ -1,0 +1,9 @@
+bin\mfa_align testcase\zhiwa\zw pinyin_dictnew.txt CHMix-model\model-4.zip CH-testresult\ht-zw
+
+bin\mfa_train_and_align CHMix pinyin_dictnew.txt CHMix-result_4 -o CHMix-model\model-4
+
+bin\mfa_align testcase\zhiwa\wav_xixi pinyin_dictnew.txt CHMix-model\model-4.zip CH-testresult\xixi
+
+bin\mfa_train_and_align lab lexicon.txt result\ -o US
+
+bin\mfa_align emo_lab\ lexicon.txt model\us.zip result\emo_lab\
