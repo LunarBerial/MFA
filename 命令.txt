@@ -1,9 +1,15 @@
+MFA中用于标注的工具基本上就是mfa_train_and_align 和 mfa_align
+暂时没找到用GPU训练的选项，用CPU训练，数据太多程序会崩掉。一般用500对数据训练一个模型出来，然后进行align。
+自带的英语的模型，有些音素与CMU不同，所以都得重新训练。
+lexicon要提前准备好，对齐的时候出现OOV会影响标记结果，所以最好把OOV都提前处理好。
+模型路径直接生成在根目录下容易失败，后缀也要加上。
+对齐运行的时候要提前把缓存删干净，否则会直接复用之前的结果。
 bin\mfa_align testcase\zhiwa\zw pinyin_dictnew.txt CHMix-model\model-4.zip CH-testresult\ht-zw
 
 bin\mfa_train_and_align CHMix pinyin_dictnew.txt CHMix-result_4 -o CHMix-model\model-4
 
 bin\mfa_align testcase\zhiwa\wav_xixi pinyin_dictnew.txt CHMix-model\model-4.zip CH-testresult\xixi
 
-bin\mfa_train_and_align lab lexicon.txt result\ -o US
+bin\mfa_train_and_align lab lexicon.txt result\ -o model\US.zip
 
 bin\mfa_align emo_lab\ lexicon.txt model\us.zip result\emo_lab\
